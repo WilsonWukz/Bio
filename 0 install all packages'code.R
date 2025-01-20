@@ -1,7 +1,7 @@
 # Install CRAN packages
 install.packages("Seurat")
 package.version("Seurat")
-install.packages("clustree")
+# install.packages("torch")
 install.packages("sigclust")
 install.packages("glmpca")
 install.packages("ggplot2")
@@ -58,16 +58,23 @@ BiocManager::install('clusterProfiler', force = TRUE) #
 BiocManager::install('DOSE', force = TRUE)
 BiocManager::install('enrichplot', force = TRUE)
 BiocManager::install('pathview', force = TRUE)
+BiocManager::install("slingshot", force = TRUE)
+BiocManager::install("monocle", force = TRUE)
+
+
 
 options(timeout = 600)  # Increase to 600 seconds or more if needed
 BiocManager::install('org.Hs.eg.db', force = TRUE)#Dependence for pathview
-
 BiocManager::install('VennDetail', force = TRUE)
 
 ## load Github packages ()
 library(usethis) #
 library(gitcreds) #
 
+usethis::use_git_config(user.name = "AccountName", user.email = "Email")
+# usethis::create_github_token()
+
+credentials::set_github_pat("YOUR_APT_KEY")
 # Save your PAT in environ
 usethis::edit_r_environ()
 
@@ -79,7 +86,7 @@ library(devtools)
 # 使用 devtools::install_github() 从 GitHub 安装所需的 R 包
 devtools::install_github("satijalab/seurat-wrappers")       # SeuratWrappers
 devtools::install_github("perou-lab/MultiK")                   # MultiK
-devtools::install_github("sqjin/CellChat")                  # CellChat
+devtools::install_github("jinworks/CellChat")
 BiocManager::install("ComplexHeatmap") #dependencies for cellchat
 
 devtools::install_github("navinlabcode/copykat")            # copykat
@@ -97,21 +104,25 @@ install.packages("magick")                                  #Dependence for scRN
 devtools::install_github("junjunlab/jjAnno")                #Dependence for scRNAtoolVis
 devtools::install_github("junjunlab/scRNAtoolVis")
 
-devtools::install_github("TheHumphreysLab/plot1cell")
+devtools::install_github("TheHumphreysLab/plot1cell", force = T)
 #Install dependencies for plot1cell
 BiocManager::install('DoubletFinder', force = TRUE)
 devtools::install_github("chris-mcginnis-ucsf/DoubletFinder")
 BiocManager::install('loomR', force = TRUE)
+
+devtools::install_github("cole-trapnell-lab/monocle3", force = TRUE)
 devtools::install_github("mojaveazure/loomR")
 
 BiocManager::install('EnsDb.Hsapiens.v86')
 BiocManager::install('GEOquery')
 BiocManager::install('simplifyEnrichment')
 
+devtools::install_github("cole-trapnell-lab/monocle-release@develop")
+
 #Install Dr.Meng's Package
 devtools::install_github("LingzhangMeng/TidyGenePlot")
 devtools::install_github("LingzhangMeng/scTidyGene")
+devtools::install_github("LingzhangMeng/OptiRes")
 # Install My Github packages
 devtools::install_github("WilsonWukz/EasyCellMarker2")
 devtools::install_github("WilsonWukz/SimilarityDistanceCalculate")
-devtools::install_github("WilsonWukz/SubClusterTool")
